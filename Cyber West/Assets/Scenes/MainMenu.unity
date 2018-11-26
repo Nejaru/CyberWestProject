@@ -1014,7 +1014,7 @@ Prefab:
     - target: {fileID: 114286815664462782, guid: 1345cb682bdaed347be86987f1357ddf,
         type: 2}
       propertyPath: m_Text
-      value: Start
+      value: Star
       objectReference: {fileID: 0}
     - target: {fileID: 114040817567827562, guid: 1345cb682bdaed347be86987f1357ddf,
         type: 2}
