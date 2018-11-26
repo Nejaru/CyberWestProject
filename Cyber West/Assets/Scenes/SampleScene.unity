@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 205211719}
   - component: {fileID: 205211718}
   m_Layer: 0
-  m_Name: UpgradeSpawner
+  m_Name: UpgradeSpawners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
