@@ -10,6 +10,10 @@ TagManager:
   - Enemy
   - badBullet
   - Building
+  - laserUpgrade
+  - shotgunUpgrade
+  - plasmaUpgrade
+  - rifleUpgrade
   layers:
   - Default
   - TransparentFX

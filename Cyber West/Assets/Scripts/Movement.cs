@@ -7,7 +7,14 @@ public class Movement : PlayerBulletSpawner {
 
     public float speed = 5f;
 	private bool laser = false;
+    private bool shotgun = false;
+    private bool plasma = false;
+    private bool rifle = false;
+    private bool standard = true;
 	public int laserCount;
+    public int plasmaCount;
+    public int shotgunCount;
+    public int rifleCount;
 	private int ammo;
 	public int health;
     public GameObject character;
@@ -41,9 +48,8 @@ public class Movement : PlayerBulletSpawner {
 
 
 
-        if(Input.GetButtonDown("Fire1") && !laser)
+        if(Input.GetButtonDown("Fire1") && standard)
         {
-            
             Fire();
             sndShoot.Play();
         }
@@ -54,21 +60,74 @@ public class Movement : PlayerBulletSpawner {
 			if (ammo <= 0)
 			{
 				laser = false;
+                standard = true;
 			}
             sndShoot2.Play();
+        }
+        if(Input.GetButtonDown("Fire1") && shotgun)
+        {
+            FireShotgun();
+            ammo--;
+            if(ammo<=0)
+            {
+                shotgun = false;
+                standard = true;
+            }
+        }
+        if (Input.GetButtonDown("Fire1") && plasma)
+        {
+            FirePlasma();
+            ammo--;
+            if (ammo <= 0)
+            {
+                plasma = false;
+                standard = true;
+            }
+        }
+        if (Input.GetButtonDown("Fire1") && rifle)
+        {
+            FireRifle();
+            ammo--;
+            if (ammo <= 0)
+            {
+                rifle = false;
+                standard = true;
+            }
         }
 
     }
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "upgrade") {
+		if (collision.gameObject.tag == "laserUpgrade") {
 
 			laser = true;
+            standard = false;
 			ammo = laserCount;
 		}
+        if (collision.gameObject.tag == "shotgunUpgrade")
+        {
 
-		if (collision.gameObject.tag == "badBullet") {
+            shotgun = true;
+            standard = false;
+            ammo = shotgunCount;
+        }
+        if (collision.gameObject.tag == "plasmaUpgrade")
+        {
+
+            plasma = true;
+            standard = false;
+            ammo = plasmaCount;
+        }
+        if (collision.gameObject.tag == "rifleUpgrade")
+        {
+
+            rifle = true;
+            standard = false;
+            ammo = rifleCount;
+        }
+
+        if (collision.gameObject.tag == "badBullet") {
 
 			health--;
 
